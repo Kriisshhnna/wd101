@@ -1,24 +1,24 @@
 const userEmail = document.getElementById('email');
-email.addEventListener('input', () => validateEmail(userEmail));
+userEmail.addEventListener('input', () => validateEmail(userEmail));
 
-function validateEmail(element){
-    if(element.validity.typeMismatch){
+function validateEmail(element) {
+    if (element.validity.typeMismatch) {
         element.setCustomValidity("The entered email is not in the right format!!!");
         element.reportValidity();
-    }else{
-        element.setCustomValidity('')
+    } else {
+        element.setCustomValidity('');
     }
 }
 
 const userName = document.getElementById('name');
 userName.addEventListener('input', () => validateName(userName));
 
-function validateName(name){
-    const namePattern = /^[A-Za-z]+$/;
+function validateName(name) {
+    const namePattern = /^[A-Za-z ]+$/; // Allow spaces for full names
 
-    if(namePattern.test(name.value)){
+    if (namePattern.test(name.value)) {
         name.setCustomValidity('');
-    }else{
+    } else {
         name.setCustomValidity("Name can have only English alphabets");
         name.reportValidity();
     }
@@ -27,12 +27,12 @@ function validateName(name){
 const userPassword = document.getElementById('password');
 userPassword.addEventListener('input', () => validatePassword(userPassword));
 
-function validatePassword(password){
+function validatePassword(password) {
     const p = password.value;
-    if(p.length < 8){
-        password.setCustomValidity("Password must be atleast of 8 characters.");
+    if (p.length < 8) {
+        password.setCustomValidity("Password must be at least 8 characters.");
         password.reportValidity();
-    }else{
+    } else {
         password.setCustomValidity('');
     }
 }
@@ -40,22 +40,23 @@ function validatePassword(password){
 const userDOB = document.getElementById('dob');
 userDOB.addEventListener('input', () => validateDOB(userDOB));
 
-function validateDOB(dob){
-const tD = new Date();
-const tY = tD.getFullYear();
+function validateDOB(dob) {
+    const tD = new Date();
+    const tY = tD.getFullYear();
 
-const minY = tY - 18;
-const maxY = tY- 55;
+    const minY = tY - 18;
+    const maxY = tY - 55;
 
-const udob = new Date(dob.value);
+    const udob = new Date(dob.value);
 
-if(udob.getFullYear() <= minY && udob.getFullYear() >= maxY){
-    dob.setCustomValidity('');
-}else{
-    dob.setCustomValidity("Your age does not meet the requied age");
-    dob.reportValidity();
+    if (udob.getFullYear() <= minY && udob.getFullYear() >= maxY) {
+        dob.setCustomValidity('');
+    } else {
+        dob.setCustomValidity("Your age does not meet the required age");
+        dob.reportValidity();
+    }
 }
-}
+
 // Get the form element
 let userForm = document.getElementById("user-form");
 
@@ -64,7 +65,7 @@ const retrieveEntries = () => {
     let entries = localStorage.getItem("user-entries");
     if (entries) {
         return JSON.parse(entries);
-    } 
+    }
     return [];
 }
 
@@ -132,7 +133,7 @@ const saveUserForm = (event) => {
     // Clear form fields
     userForm.reset();
 
-    // Display updated entries
+    // Display updated entries immediately after submission
     displayEntries();
 }
 
