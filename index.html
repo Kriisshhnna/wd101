@@ -1,83 +1,142 @@
-<form id="user-form">
-    <div style="width: 420px; height : 550px; margin: auto; padding: 15px 10px; background-image: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8PEA0PDQ0NDQ0NDQ0NDQ0NDQ8NDQ0NFREWFhURFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQwNFhAPFS0ZFRkrKysrKysrKystLSs3KystLSs3KysrKysrKy0tKysrKysrKysrKysrKysrKysrKysrK//AABEIAKwBJgMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQIH/8QAIRABAQEAAQMEAwAAAAAAAAAAAAERgSFhoSJRceECMUH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A7iAAACW/rpz7KAAAAJICgAAAAAAAAAAAAAAAM/lb6cm7ct2emZbviTloAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE3tyoAAAAAAAAAAAUAAAAAAAAADQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAABL289FAAAAACAAAAAAAAAAAAAAAAAGgAl+ftQAAAAAAAAAAAAAAAAAAAAAAAAAAARQAAAAAAAAAACAAAAAAAAAAAAAAAAAAAUAIAAAAAAAAlgKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAEzhQAAAAEl8KAAAAAAAAAAAAAAAAAAAAAAlgCgAAAAAJd/nS95vRQAEoKAAAAAAAAAACUFExQAAAAAAAASqAAAAAP/2Q==);
-    display: flex; flex-direction: column; border-radius: 20px; box-shadow: 0px 5px 8px rgb(194, 10, 10);
-    background-position: center; background-size: cover; margin-top: 2%;">
-    <div style="text-align: center; color: rgb(140, 11, 145);">
-        <h1>
-            Registration Form
-        </h1>
-    </div>
-    <div class="spacing">
-        <label  for="name">Name</label>
-        <input  type="text" id="name" name="name" required placeholder="Enter Full Name">
-    </div>
-    <div class="spacing">
-        <label  for="email">Email</label>
-        <input  type="email" id="email" name="email" required placeholder="Enter Email">
-    </div>
-    <div class="spacing">
-        <label for="password">Password</label>
-        <input  type="password" id="password" name="password" required placeholder="Enter Password">
-    </div>
-    <div class="spacing">
-        <label for="dob">Date of Birth</label>
-        <input type="date" id="dob" name="dob" required>
-    </div>
-    <div class= "tandc">
-        <label for="acceptTerms">Accept Terms & Conditions</label>
-        <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
-    </div>
-
- 
-    <button id="button" class="button" type="submit">Submit</button>
-    </div>
-    <div
-    class="relative bg-white px-6 mt-5 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:rounded-lg sm:px-10"
-
- class="mx-auto"> <h2 class="text-3xl text-center font-bold leading-tight">Entries</h2> <div class="divide-y divide-gray-300/50" id='user-entries'></div> </div>
-</div>
- </form>
- <script src="index.js"></script>
- <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
     <style>
-        .spacing{
-            display: flex; justify-content: space-around;    
-        }
-        .spacing input {
-           width: 55%;  border-radius: 8px; height: 40px; box-shadow: 0.5px 1px 2px 1px pink, 0.5px 1px 2px 1px pink;
-           padding-left: 15px; margin-top: 9px; margin-right: 4px; border: none; outline: none;
-        }
-        .spacing label{
-            font-size: large; font-weight: bold; color: darkblue;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            width: 45%;  padding: 20px; 
-        }
-        .tandc{
-            font-size: large; font-weight: bold;  color: darkblue;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            padding: 20px; 
-        }
-        .tandc input{
-            margin-left: 60px; width: 15px; height: 15px;
-        }
-        .button{
-            margin: auto; width: 120px; height: 55px; border-radius: 12px; 
-            color: rgb(120, 224, 89); background-color: rgb(169, 145, 29);
-            box-shadow: 0px 2px 3px rgb(194, 10, 10); border: none;
-        }
-        body{
+        body {
             background-image: url(https://plus.unsplash.com/premium_photo-1706270035444-c6d2e3c9a470?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTgxfHxiYWNrZ3JvdW5kJTIwdGV4dHVyZXxlbnwwfHwwfHx8MA%3D%3D);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             height: 100vh;
             margin: 0;
+            font-family: Arial, sans-serif;
         }
-        .spacing input:invalid:focus {
-            border: solid 2px red; box-shadow: none;
+        #user-form {
+            width: 420px;
+            height: 550px;
+            margin: auto;
+            padding: 15px 10px;
+            background-image: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8PEA0PDQ0NDQ0NDQ0NDQ0NDQ8NDQ0NFREWFhURFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQwNFhAPFS0ZFRkrKysrKysrKystLSs3KystLSs3KysrKysrKy0tKysrKysrKysrKysrKysrKysrKysrK//AABEIAKwBJgMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQIH/8QAIRABAQEAAQMEAwAAAAAAAAAAAAERgSFhoSJRceECMUH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A7iAAACW/rpz7KAAAAJICgAAAAAAAAAAAAAAAM/lb6cm7ct2emZbviTloAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE3tyoAAAAAAAAAAAUAAAAAAAAADQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAABL289FAAAAACAAAAAAAAAAAAAAAAAGgAl+ftQAAAAAAAAAAAAAAAAAAAAAAAAAAARQAAAAAAAAAACAAAAAAAAAAAAAAAAAAAUAIAAAAAAAAlgKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAEzhQAAAAEl8KAAAAAAAAAAAAAAAAAAAAAAlgCgAAAAAJd/nS95vRQAEoKAAAAAAAAAACUFExQAAAAAAAASqAAAAAP/2Q==);
+            display: flex;
+            flex-direction: column;
+            border-radius: 20px;
+            box-shadow: 0px 5px 8px rgb(194, 10, 10);
+            background-position: center;
+            background-size: cover;
+            margin-top: 2%;
         }
-        .spacing input:focus::placeholder {
-           color: transparent;
+        .spacing {
+            display: flex;
+            justify-content: space-between;
+        }
+        .spacing input {
+            width: 70%; /* Adjusted width for better spacing */
+            border-radius: 8px;
+            height: 40px;
+            box-shadow: 0.5px 1px 2px 1px pink, 0.5px 1px 2px 1px pink;
+            padding-left: 15px;
+            margin-top: 9px;
+            margin-right: 4px;
+            border: 1px solid #ccc; /* Added border for input fields */
+            outline: none;
+        }
+        .spacing label {
+            font-size: large;
+            font-weight: bold;
+            color: darkblue;
+            width: 30%; /* Adjusted width for better spacing */
+            padding: 20px;
+        }
+        .tandc {
+            font-size: large;
+            font-weight: bold;
+            color: darkblue;
+            padding: 20px;
+        }
+        .tandc input {
+            margin-left: 10px; /* Adjusted margin for checkbox */
+            width: 15px;
+            height: 15px;
+        }
+        .button {
+            margin: auto;
+            width: 120px;
+            height: 55px;
+            border-radius: 12px;
+            color: rgb(120, 224, 89);
+            background-color: rgb(169, 145, 29);
+            box-shadow: 0px 2px 3px rgb(194, 10, 10);
+            border: none;
+            cursor: pointer; /* Added cursor pointer */
+        }
+        .table-container {
+            margin: auto;
+            padding: 20px;
+            max-width: 800px; /* Set a maximum width for the table */
+            background: white; /* Added background color for table container */
+            border-radius: 12px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for the table container */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Collapsed borders */
+            margin-top: 20px; /* Spacing above the table */
+        }
+        th, td {
+            border: 1px solid #ddd; /* Border for table cells */
+            padding: 12px; /* Padding for cells */
+            text-align: left; /* Left alignment */
+        }
+        th {
+            background-color: #f2f2f2; /* Header background color */
+            color: black; /* Header text color */
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Zebra stripes for rows */
+        }
+        tr:hover {
+            background-color: #f1f1f1; /* Hover effect */
         }
     </style>
- </head>
+</head>
+<body>
+    <form id="user-form">
+        <div>
+            <div style="text-align: center; color: rgb(140, 11, 145);">
+                <h1>Registration Form</h1>
+            </div>
+            <div class="spacing">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required placeholder="Enter Full Name">
+            </div>
+            <div class="spacing">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="Enter Email">
+            </div>
+            <div class="spacing">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="Enter Password">
+            </div>
+            <div class="spacing">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            <div class="tandc">
+                <label for="acceptTerms">Accept Terms & Conditions</label>
+                <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
+            </div>
+            <button id="button" class="button" type="submit">Submit</button>
+        </div>
+    </form>
+    
+    <div class="table-container">
+        <h2 class="text-3xl text-center font-bold leading-tight">Entries</h2>
+        <div class="divide-y divide-gray-300/50" id='user-entries'></div>
+    </div>
+    
+    <script src="index.js"></script>
+</body>
+</html>
